@@ -92,9 +92,9 @@ public class ProdutoController {
               produto2.setNome(produto.getNome());  
               produto2.setDescricao(produto.getDescricao());
 			  produto2.setPreco(produto.getPreco());
+			  produto2.setSeguimento(produto.getSeguimento());
               produto2.setQuantidade(produto.getQuantidade());
-			  produto2.setVendas(produto.getVendas());
-
+			  
               Produto updated = produtoService.salvar(produto2);
               return ResponseEntity.ok().body(updated);    
       }	

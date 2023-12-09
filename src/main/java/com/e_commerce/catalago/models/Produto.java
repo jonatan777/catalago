@@ -18,81 +18,81 @@ public class Produto {
     private String nome;
     private double preco;
     private String descricao;
+    private String seguimento;
     private int quantidade;
-    private int vendas;
+   
 
     // Construtor da classe
-    public Produto(Long id, String imagem, String nome, double preco, String descricao, int quantidade, int vendas) {
+    public Produto(Long id, String imagem, String nome, double preco, String descricao, String seguimento, int quantidade) {
         this.id = id;
         this.imagem = imagem;
         this.nome = nome;
         this.preco = preco;
         this.descricao = descricao;
+        this.seguimento = seguimento;
         this.quantidade = quantidade;
-        this.vendas = vendas;
+        
     }
 
     public Produto(){
         
     }
 
-    
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getImagem() {
         return imagem;
     }
+
     public void setImagem(String imagem) {
         this.imagem = imagem;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public double getPreco() {
         return preco;
     }
+
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
     public String getDescricao() {
         return descricao;
     }
+
     public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
+
+    public String getSeguimento() {
+        return seguimento;
+    }
+
+    public void setSeguimento(String seguimento) {
+        this.seguimento = seguimento;
+    }
+
     public int getQuantidade() {
         return quantidade;
     }
+
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
     }
-    public int getVendas() {
-        return vendas;
-    }
-    public void setVendas(int vendas) {
-        this.vendas = vendas;
-    }
-    // Método toString para imprimir informações do produto
-    @Override
-    public String toString() {
-        return "Produto{" +
-                "imagem='" + imagem + '\'' +
-                "nome='" + nome + '\'' +
-                ", preco=" + preco +
-                ", descricao='" + descricao + '\'' +
-                ", quantidade='" + quantidade + '\'' +
-                ", vendas='" + vendas + '\'' +
-
-                '}';
-    }
-
 
     @Override
     public int hashCode() {
@@ -105,11 +105,10 @@ public class Produto {
         temp = Double.doubleToLongBits(preco);
         result = prime * result + (int) (temp ^ (temp >>> 32));
         result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+        result = prime * result + ((seguimento == null) ? 0 : seguimento.hashCode());
         result = prime * result + quantidade;
-        result = prime * result + vendas;
         return result;
     }
-
 
     @Override
     public boolean equals(Object obj) {
@@ -142,10 +141,30 @@ public class Produto {
                 return false;
         } else if (!descricao.equals(other.descricao))
             return false;
-        if (quantidade != other.quantidade)
+        if (seguimento == null) {
+            if (other.seguimento != null)
+                return false;
+        } else if (!seguimento.equals(other.seguimento))
             return false;
-        if (vendas != other.vendas)
+        if (quantidade != other.quantidade)
             return false;
         return true;
     }
+
+    @Override
+    public String toString() {
+        return "Produto [id=" + id + ", imagem=" + imagem + ", nome=" + nome + ", preco=" + preco + ", descricao="
+                + descricao + ", seguimento=" + seguimento + ", quantidade=" + quantidade + "]";
+    }
+
+    
+   
+    
+
+
+
+
+
+
+    
 }
