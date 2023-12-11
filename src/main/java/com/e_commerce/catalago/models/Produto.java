@@ -19,11 +19,11 @@ public class Produto {
     private double preco;
     private String descricao;
     private String seguimento;
-    private int quantidade;
+    private String quantidade;
    
 
     // Construtor da classe
-    public Produto(Long id, String imagem, String nome, double preco, String descricao, String seguimento, int quantidade) {
+    public Produto(Long id, String imagem, String nome, double preco, String descricao, String seguimento, String quantidade) {
         this.id = id;
         this.imagem = imagem;
         this.nome = nome;
@@ -86,11 +86,11 @@ public class Produto {
         this.seguimento = seguimento;
     }
 
-    public int getQuantidade() {
+    public String getQuantidade() {
         return quantidade;
     }
 
-    public void setQuantidade(int quantidade) {
+    public void setQuantidade(String quantidade) {
         this.quantidade = quantidade;
     }
 
@@ -106,7 +106,7 @@ public class Produto {
         result = prime * result + (int) (temp ^ (temp >>> 32));
         result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
         result = prime * result + ((seguimento == null) ? 0 : seguimento.hashCode());
-        result = prime * result + quantidade;
+        result = prime * result + ((quantidade == null) ? 0 : quantidade.hashCode());
         return result;
     }
 
@@ -146,7 +146,10 @@ public class Produto {
                 return false;
         } else if (!seguimento.equals(other.seguimento))
             return false;
-        if (quantidade != other.quantidade)
+        if (quantidade == null) {
+            if (other.quantidade != null)
+                return false;
+        } else if (!quantidade.equals(other.quantidade))
             return false;
         return true;
     }
@@ -158,6 +161,9 @@ public class Produto {
     }
 
     
+
+  
+   
    
     
 
