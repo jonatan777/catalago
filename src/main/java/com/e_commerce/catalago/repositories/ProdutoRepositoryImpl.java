@@ -67,4 +67,33 @@ public class ProdutoRepositoryImpl implements ProdutoRepository {
 
     }
 
+
+    @Override
+    public List<Produto> findForSalgados(){
+        String qlString = "SELECT e FROM Produto e WHERE e.seguimento = 'salgados' ORDER BY e.nome ASC ";
+        TypedQuery<Produto> query = entityManager.createQuery(qlString, Produto.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Produto> findForDoces() {
+        String qlString = "SELECT e FROM Produto e WHERE e.seguimento = 'doces' ORDER BY e.nome ASC ";
+        TypedQuery<Produto> query = entityManager.createQuery(qlString, Produto.class);
+        return query.getResultList();
+    };
+
+    @Override
+    public List<Produto> findForHamburgueres() {
+        String qlString = "SELECT e FROM Produto e WHERE e.seguimento = 'hamburgueres' ORDER BY e.nome ASC ";
+        TypedQuery<Produto> query = entityManager.createQuery(qlString, Produto.class);
+        return query.getResultList();
+    };
+
+     @Override
+    public List<Produto> findForSanduiches() {
+        String qlString = "SELECT e FROM Produto e WHERE e.seguimento = 'sanduiches' ORDER BY e.nome ASC ";
+        TypedQuery<Produto> query = entityManager.createQuery(qlString, Produto.class);
+        return query.getResultList();
+    };
+
 }

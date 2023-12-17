@@ -14,4 +14,8 @@ public interface ProdutoRepository {
     Produto findById(@NonNull Long id);
     Produto findByName(@NonNull String name);
     List<Produto> findForNames();
+    List<Produto> findForSalgados();
+    List<Produto> findForDoces();
+    List<Produto> findForHamburgueres();
+    List<Produto> findForSanduiches();
 }

@@ -10,7 +10,10 @@ import com.e_commerce.catalago.models.Imagem;
 
 @Repository
 public interface ImagemRepository extends JpaRepository<Imagem, Long> {
+
 	Optional<Imagem> findByName(String name);
+
+ 
 }
 
 

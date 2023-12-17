@@ -14,6 +14,7 @@ import com.e_commerce.catalago.repositories.ImagemRepository;
 import com.e_commerce.catalago.util.ImageUtility;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -22,7 +23,31 @@ public class ImagemController {
     @Autowired
     ImagemRepository imageRepository;
 
- //   @PostMapping("/upload/image") 
+
+
+    //get all
+    @GetMapping(path = {"/get/image/all"})
+    public List<Imagem> listar() {
+      return imageRepository.findAll();
+    }
+
+
+    // deletando registro da tabela
+     @DeleteMapping(path ={"/image/delete/{id}"})
+     public ResponseEntity <?> delete(@PathVariable Long id) {
+
+         final Optional<Imagem> image = imageRepository.findById(id);
+
+	 if(image != null){ 
+           imageRepository.deleteById(id);;
+	   return new ResponseEntity<>(image, HttpStatus.FOUND);
+	 }
+        String resposta = "imagem não encontrada";
+	return new ResponseEntity<>(resposta, HttpStatus.NOT_FOUND);
+     } 
+
+
+    //@PostMapping("/upload/image") 
     @PostMapping(path = {"/upload/image"})
     public ResponseEntity<ImageUploadResponse> uplaodImage(@RequestParam("image") MultipartFile file)
             throws IOException {

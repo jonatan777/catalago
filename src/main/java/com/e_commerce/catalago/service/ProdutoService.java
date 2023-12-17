@@ -29,6 +29,18 @@ public class ProdutoService {
     public List<Produto> listNomes() {
       return produtoRepository.findForNames();
     }
+     public List<Produto> allSalgados() {
+       return produtoRepository.findForSalgados();
+    } 
+    public List<Produto> allDoces() {
+       return produtoRepository.findForDoces();
+    } 
+    public List<Produto> allHamburgueres() {
+       return produtoRepository.findForHamburgueres();
+    }
+    public List<Produto> allSanduiches() {
+       return produtoRepository.findForSanduiches();
+    }
     public Produto getProdutoId(Long id) {
       return produtoRepository.findById(id);
     }
