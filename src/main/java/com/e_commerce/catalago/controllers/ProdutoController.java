@@ -47,6 +47,14 @@ public class ProdutoController {
 	public List<Produto> doces() {
 		return produtoService.allDoces();
 	}
+	@GetMapping(path = { "/allHamburgeres" })
+	public List<Produto> hamburgueres() {
+		return produtoService.allHamburgueres();
+	}
+	@GetMapping(path = { "/allSanduiches" })
+	public List<Produto> sanduiches() {
+		return produtoService.allSanduiches();
+	}
 	 //buscar um unico registro no banco pela nome
      @GetMapping(path = {"/buscar/{nome}"})
     public ResponseEntity<Produto> getNomeDB(@PathVariable("nome") String nome) throws NullPointerException, IdExeption {
